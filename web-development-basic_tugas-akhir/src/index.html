@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas Akhir</title>
+  <link rel="shortcut icon" href="https://vuejs.org/logo.svg" type="image/x-icon">
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200..900&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link rel="stylesheet" href="./style.sass">
+</head>
+
+<body class="font-inter">
+  <div id="top"></div>
+
+  <header data-horizontal-scroll-wrapper>
+    <div class="title">
+      <h1>Explore the Beautiful Destination</h1>
+      <p>Find the best place for your vacation, let your head feel the freshness.</p>
+    </div>
+
+    <ul class="slider" data-slider="main" data-horizontal-scroll-target aria-label="carousel">
+      <li role="tabpanel">
+        <include src="src/components/CardDestination.html">
+          {"title": "Lauterbrunnen, Switzerland", "imgSrc": "./assets/robin-ulrich-QuZ6kOAeW2o-unsplash.jpg?width=600",
+          "link": "#lauterbrunnen/detail"}
+        </include>
+      </li>
+
+      <li role="tabpanel">
+        <include src="src/components/CardDestination.html">
+          {"title": "Bali, Indonesia", "imgSrc": "./assets/alfiano-sutianto-exFdOWkYBQw-unsplash.jpg?width=600",
+          "link": "#bali/detail"}
+        </include>
+      </li>
+
+      <li role="tabpanel">
+        <include src="src/components/CardDestination.html">
+          {"title": "Pulau Komodo, Indonesia", "imgSrc": "./assets/david-clode-o-S8EiQVo_g-unsplash.jpg?width=600",
+          "link": "#pulau-komodo/detail"}
+        </include>
+      </li>
+
+      <li role="tabpanel">
+        <include src="src/components/CardDestination.html">
+          {"title": "Raja Ampat, Indonesia", "imgSrc": "./assets/sutirta-budiman-DxmBSgUYKis-unsplash.jpg?width=600",
+          "link": "#raja-ampat/detail"}
+        </include>
+      </li>
+    </ul>
+
+    <div class="slider__control">
+      <button class="slider__control__btn slider__control__btn--prev" data-slider-control-prev="main">
+        <span class="material-icons">
+          arrow_right_alt
+        </span>
+      </button>
+      <button class="slider__control__btn slider__control__btn--next" data-slider-control-next="main">
+        <span class="material-icons">
+          arrow_right_alt
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="content">
+      <section id="lauterbrunnen/detail" class="details">
+        <div class="info">
+          <div>
+            <h2>Lauterbrunnen</h2>
+            <small class="subtitle">Switzerland</small>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa delectus numquam omnis voluptate sapiente
+            libero odit ipsa corrupti? Aspernatur asperiores explicabo quod eaque sapiente magni dolores excepturi omnis
+            architecto maxime.</p>
+        </div>
+        <div class="picture">
+          <img src="./assets/robin-ulrich-QuZ6kOAeW2o-unsplash.jpg?width=700" alt="Lauterbrunnen">
+          <small>Photo by <a
+              href="https://unsplash.com/@rocoweb?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Robin
+              Ulrich</a> on <a
+              href="https://unsplash.com/s/photos/lauterbrunnen?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+          </small>
+        </div>
+      </section>
+
+      <section id="bali/detail" class="details">
+        <div class="info">
+          <div>
+            <h2>Bali</h2>
+            <small class="subtitle">Indonesia</small>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa delectus numquam omnis voluptate sapiente
+            libero odit ipsa corrupti? Aspernatur asperiores explicabo quod eaque sapiente magni dolores excepturi omnis
+            architecto maxime.</p>
+        </div>
+        <div class="picture">
+          <img src="./assets/alfiano-sutianto-exFdOWkYBQw-unsplash.jpg?width=700" alt="Bali">
+          <small>Photo by <a
+              href="https://unsplash.com/@alfianostn?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alfiano
+              Sutianto</a> on <a
+              href="https://unsplash.com/s/photos/bali?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+          </small>
+        </div>
+      </section>
+
+      <section id="pulau-komodo/detail" class="details">
+        <div class="info">
+          <div>
+            <h2>Pulau Komodo</h2>
+            <small class="subtitle">Indonesia</small>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa delectus numquam omnis voluptate sapiente
+            libero odit ipsa corrupti? Aspernatur asperiores explicabo quod eaque sapiente magni dolores excepturi omnis
+            architecto maxime.</p>
+        </div>
+        <div class="picture">
+          <img src="./assets/david-clode-o-S8EiQVo_g-unsplash.jpg" alt="Pulau Komodo">
+          <small>Photo by <a
+              href="https://unsplash.com/@davidclode?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">David
+              Clode</a> on <a
+              href="https://unsplash.com/s/photos/komodo%20island?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></small>
+        </div>
+      </section>
+
+      <section id="raja-ampat/detail" class="details">
+        <div class="info">
+          <div>
+            <h2>Raja Ampat</h2>
+            <small class="subtitle">Indonesia</small>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa delectus numquam omnis voluptate sapiente
+            libero odit ipsa corrupti? Aspernatur asperiores explicabo quod eaque sapiente magni dolores excepturi omnis
+            architecto maxime.</p>
+        </div>
+        <div class="picture">
+          <img src="./assets/sutirta-budiman-DxmBSgUYKis-unsplash.jpg?width=700" alt="Raja Ampat">
+          <small>Photo by <a
+              href="https://unsplash.com/@sutirtab?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">sutirta
+              budiman</a> on <a
+              href="https://unsplash.com/s/photos/raja-ampat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></small>
+        </div>
+      </section>
+    </div>
+
+    <aside>
+      <div class="identity">
+        <small>Article written by</small>
+        <img src="./assets/me-transparent.png" alt="anhzf">
+        <strong class="title">Alwan Nuha Zaky Fadhila</strong>
+      </div>
+
+      <nav class="sidebar">
+        <ul>
+          <li>
+            <a href="#top">Goto Top</a>
+
+            <ul>
+              <li><a href="#lauterbrunnen/detail">Lauterbrunnen</a></li>
+              <li><a href="#bali/detail">Bali</a></li>
+              <li><a href="#pulau-komodo/detail">Pulau Komodo</a></li>
+              <li><a href="#raja-ampat/detail">Raja Ampat</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+  </main>
+
+  <footer>
+    <h6>Alwan Nuha Zaky Fadhila</h6>
+    <small>Copyright &copy; 2022</small>
+  </footer>
+</body>
+
+<script src="./script.js" type="module" defer></script>
+
+</html>

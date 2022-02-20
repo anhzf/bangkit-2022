@@ -1,0 +1,243 @@
+@use 'sass:color'
+@import lib
+
+$primary: #0062A0
+$on-primary: #FFFFFF
+$primary-container: #CFE5FF
+$on-primary-container: #001D35
+$secondary: #526070
+$on-secondary: #FFFFFF
+$secondary-container: #D6E4F7
+$on-secondary-container: #0F1D2A
+$tertiary: #695779
+$on-tertiary: #FFFFFF
+$tertiary-container: #F1DAFF
+$on-tertiary-container: #241532
+$error: #BA1B1B
+$on-error: #FFFFFF
+$error-container: #FFDAD4
+$on-error-container: #410001
+$background: #FDFCFF
+$on-background: #1A1C1E
+$surface: #FDFCFF
+$on-surface: #1A1C1E
+$surface-variant: #DFE3EB
+$on-surface-variant: #42474E
+$outline: #73777F
+
+:root
+  --primary: #0062A0
+  --on-primary: #FFFFFF
+  --primary-container: #CFE5FF
+  --on-primary-container: #001D35
+  --secondary: #526070
+  --on-secondary: #FFFFFF
+  --secondary-container: #D6E4F7
+  --on-secondary-container: #0F1D2A
+  --tertiary: #695779
+  --on-tertiary: #FFFFFF
+  --tertiary-container: #F1DAFF
+  --on-tertiary-container: #241532
+  --error: #BA1B1B
+  --on-error: #FFFFFF
+  --error-container: #FFDAD4
+  --on-error-container: #410001
+  --background: #FDFCFF
+  --on-background: #1A1C1E
+  --surface: #FDFCFF
+  --on-surface: #1A1C1E
+  --surface-variant: #DFE3EB
+  --on-surface-variant: #42474E
+  --outline: #73777F
+  --shadow: 0 .6px 1px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+
+*
+  color: var(--on-background)
+  @apply box-border m-0 font-sans
+
+.debug *
+  @apply outline outline-red-500
+
+html
+  @apply scroll-smooth
+
+body
+  background-color: var(--background)
+  @apply w-full
+  > *
+    @apply max-w-full
+
+ul, ol
+  @apply list-none
+
+ul
+  padding-inline-start: theme('spacing.4')
+
+a
+  color: var(--primary)
+  &:hover
+    color: var(--on-primary-container)
+
+p
+  @apply max-w-prose
+
+h1, h2, h3, h4, h5, h6
+  @apply font-semibold
+
+h1
+  @apply text-7xl
+
+h2
+  @apply text-5xl
+
+h3
+  @apply text-3xl
+
+h4
+  @apply text-2xl
+
+h5
+  @apply text-xl
+
+h6
+  @apply text-lg
+
+header
+  background-color: var(--surface-variant)
+  @apply w-full flex flex-col py-8 gap-y-8
+  .title
+    @apply flex flex-col gap-y-4
+  h1
+    @apply mx-8
+  p
+    @apply text-xl mx-10
+
+main
+  @apply relative flex
+  > aside
+    background-color: var(--tertiary-container)
+    color: var(--on-tertiary-container)
+    @apply sticky top-0 flex flex-col justify-between w-60 max-h-screen py-10
+
+aside
+  > nav
+    @apply flex flex-col p-4
+
+footer
+  background-color: var(--secondary)
+  @apply p-8
+  *
+    color: var(--on-secondary)
+
+.identity
+  @apply flex flex-col gap-y-4 p-6
+  > img
+    background-color: var(--surface)
+    @apply self-center w-32 h-32 object-cover rounded-full
+  .title
+    -webkit-line-clamp: 1
+    @apply text-clip whitespace-nowrap
+
+button,
+.btn
+  color: var(--on-primary)
+  background-color: var(--primary)
+  @apply flex justify-center items-center cursor-pointer py-2 px-4 text-lg font-semibold border-0 rounded-3xl
+  @apply ring-0 ring-[#{$on-surface}] shadow-none ring-offset-2 ring-offset-[#{$surface}] transition-shadow
+  & > *
+    color: var(--on-primary)
+  &:hover
+    color: color.adjust($on-primary, $lightness: 8%)
+    background-color: color.adjust($primary, $lightness: 8%)
+  &:active
+    color: color.adjust($on-primary, $lightness: 12%)
+    background-color: color.adjust($primary, $lightness: 12%)
+  &:focus
+    color: color.adjust($on-primary, $lightness: 12%)
+    background-color: color.adjust($primary, $lightness: 12%)
+    --tw-ring-inset: #{""}
+    @apply ring-2
+
+.card
+  background-color: var(--surface)
+  box-shadow: var(--shadow)
+  @apply relative flex flex-col rounded-[2rem] overflow-hidden
+  .content
+    @apply p-4
+  .media
+    @apply shrink
+
+.slider
+  @apply flex p-4 pr-[50vw] gap-x-8 overflow-x-hidden overscroll-contain
+  li
+    @apply shrink-0
+    &:focus > .card-destination
+      --tw-ring-inset: #{""}
+      @apply ring-4 ring-[#{$primary}] ring-offset-2 ring-offset-[#{$surface}]
+  &__control
+    @apply flex justify-end gap-x-4 px-8
+    &__btn
+      &--prev
+        .material-icons
+          transform: rotate(180deg)
+
+.card-destination
+  @extend .card
+  .content
+    @apply flex justify-between items-center px-6
+  .media
+    @apply h-96 aspect-[16/10]
+  h2
+    @apply font-semibold
+
+main
+  > .content
+    @apply grow flex flex-col
+    > section
+      background-color: var(--primary-container)
+      @apply grow min-h-screen
+      *
+        color: var(--on-primary-container)
+      &:nth-child(even)
+        background-color: var(--primary)
+        *
+          color: var(--on-primary)
+
+section.details
+  @apply flex p-8
+  &:nth-child(odd)
+    @apply flex-row-reverse
+  .info
+    @apply shrink-0 flex flex-col justify-center gap-y-8
+  .picture
+    @apply grow flex flex-col justify-center px-8
+    > img
+      @apply w-full
+  .subtitle
+    @apply ml-1
+
+@media screen and (max-width: theme('screens.sm'))
+  header
+    h1
+      @apply mx-4
+    p
+      @apply mx-6
+
+  main
+    @apply flex-col
+    > aside
+      @apply w-auto flex-row justify-around
+
+  aside
+    > nav
+      @apply justify-center
+
+  .slider
+    @apply overflow-x-auto overscroll-auto
+
+  section.details
+    @apply flex-col-reverse gap-y-4 py-12
+    &:nth-child(odd)
+      @apply flex-col
+    .picture
+      @apply px-0

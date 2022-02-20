@@ -1,0 +1,7 @@
+node_modules
+
+# distribution files
+dist
+
+# cache related
+.parcel-cache
