@@ -68,7 +68,7 @@ body
     @apply max-w-full
 
 ul, ol
-  @apply list-none
+  @apply list-none space-y-1
 
 ul
   padding-inline-start: theme('spacing.4')
@@ -77,6 +77,8 @@ a
   color: var(--primary)
   &:hover
     color: var(--on-primary-container)
+  .material-icons
+    @apply text-base align-middle ml-1
 
 p
   @apply max-w-prose
@@ -116,12 +118,13 @@ main
   @apply relative flex
   > aside
     background-color: var(--tertiary-container)
-    color: var(--on-tertiary-container)
     @apply sticky top-0 flex flex-col justify-between w-60 max-h-screen py-10
+    *
+      color: var(--on-tertiary-container)
 
 aside
   > nav
-    @apply flex flex-col p-4
+    @apply flex flex-col p-6
 
 footer
   background-color: var(--secondary)
@@ -131,21 +134,25 @@ footer
 
 .identity
   @apply flex flex-col gap-y-4 p-6
+  *
+    color: color.adjust($on-tertiary-container, $alpha: -.3)
   > img
     background-color: var(--surface)
     @apply self-center w-32 h-32 object-cover rounded-full
   .title
+    color: var(--on-tertiary-container)
     -webkit-line-clamp: 1
     @apply text-clip whitespace-nowrap
 
 button,
 .btn
-  color: var(--on-primary)
+  color: var(--on-primary) !important
   background-color: var(--primary)
-  @apply flex justify-center items-center cursor-pointer py-2 px-4 text-lg font-semibold border-0 rounded-3xl
+  @apply flex justify-center items-center cursor-pointer py-2 px-4  border-0 rounded-3xl
+  @apply text-lg font-semibold no-underline
   @apply ring-0 ring-[#{$on-surface}] shadow-none ring-offset-2 ring-offset-[#{$surface}] transition-shadow
   & > *
-    color: var(--on-primary)
+    color: var(--on-primary) !important
   &:hover
     color: color.adjust($on-primary, $lightness: 8%)
     background-color: color.adjust($primary, $lightness: 8%)
@@ -157,6 +164,8 @@ button,
     background-color: color.adjust($primary, $lightness: 12%)
     --tw-ring-inset: #{""}
     @apply ring-2
+  &--sm
+    @apply text-sm
 
 .card
   background-color: var(--surface)
@@ -210,11 +219,13 @@ section.details
   .info
     @apply shrink-0 flex flex-col justify-center gap-y-8
   .picture
-    @apply grow flex flex-col justify-center px-8
+    @apply flex flex-col justify-center px-8
     > img
       @apply w-full
   .subtitle
     @apply ml-1
+  .actions
+    @apply flex py-4
 
 @media screen and (max-width: theme('screens.sm'))
   header
@@ -236,8 +247,8 @@ section.details
     @apply overflow-x-auto overscroll-auto
 
   section.details
-    @apply flex-col-reverse gap-y-4 py-12
+    @apply flex-col-reverse justify-center gap-y-8 py-12
     &:nth-child(odd)
-      @apply flex-col
+      @apply flex-col-reverse
     .picture
       @apply px-0

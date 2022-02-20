@@ -1,5 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-
 module.exports = {
   content: [
     './src/index.html',
@@ -7,7 +5,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [
-    // require('tailwindcss-font-inter'),
-  ],
+  plugins: [],
 }

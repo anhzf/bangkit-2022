@@ -1,44 +1,60 @@
-document.addEventListener('scroll', onScrollDoc);
+document.addEventListener('scroll', onDocScroll);
+document.addEventListener('click', onDocClick);
 document.querySelectorAll('[data-slider-control-prev]')
-  .forEach(el => el.addEventListener('click', onClickSliderControlPrev));
+  .forEach(el => el.addEventListener('click', onSliderControlPrevClick));
 document.querySelectorAll('[data-slider-control-next]')
-  .forEach(el => el.addEventListener('click', onClickSliderControlNext));
+  .forEach(el => el.addEventListener('click', onSliderControlNextClick));
 
-let isForceScroll = false;
+const onDocScrollState = {
+  isForceScroll: false,
+  isCurrentWrapper: false,
+  // isPassingWrapper: false,
+};
 
 /**
- * @this {HTMLElement}
+ * @this {Document}
  * @param {Event} e
  */
-function onScrollDoc(e) {
+function onDocScroll(e) {
   const scrollY = document.scrollingElement.scrollTop;
 
   document.querySelectorAll('[data-horizontal-scroll-wrapper]')
     .forEach(el => {
-      if (!isForceScroll) {
-        const clientRect = el.getBoundingClientRect();
-        const isInViewport = clientRect.top <= window.innerHeight && clientRect.bottom >= 0;
+      const clientRect = el.getBoundingClientRect();
 
-        if (isInViewport) {
-          const offsetY = scrollY - clientRect.top + Number(el.dataset.horizontalScrollTargetOffsetY || 0);
-          const scrollProgress = offsetY / clientRect.height;
+      onDocScrollState.isCurrentWrapper = clientRect.top <= window.innerHeight && clientRect.bottom >= 0;
 
-          el.querySelectorAll('[data-horizontal-scroll-target]')
-            .forEach(elEl => {
-              if (scrollProgress <= 1) {
-                elEl.scrollLeft = elEl.clientWidth * scrollProgress;
-              }
-            });
-        }
+      const isShouldScrollTheWrapper = !onDocScrollState.isForceScroll && onDocScrollState.isCurrentWrapper
+
+      if (isShouldScrollTheWrapper) {
+        const offsetY = scrollY - clientRect.top + Number(el.dataset.horizontalScrollTargetOffsetY || 0);
+        const scrollProgress = offsetY / clientRect.height;
+
+        el.querySelectorAll('[data-horizontal-scroll-target]')
+          .forEach(elEl => {
+            if (scrollProgress <= 1) {
+              elEl.scrollLeft = elEl.clientWidth * scrollProgress;
+            }
+          });
       }
     });
+}
+
+/**
+ * @this {Document}
+ * @param {Event} e
+ */
+function onDocClick(e) {
+  if (e.target instanceof HTMLAnchorElement) {
+    onDocScrollState.isForceScroll = true;
+  }
 }
 
 /**
  * @this {HTMLElement}
  * @param {MouseEvent} e
  */
-function onClickSliderControlPrev(e) {
+function onSliderControlPrevClick(e) {
   incrementSlider(this.dataset.sliderControlPrev, -1);
 }
 
@@ -46,7 +62,7 @@ function onClickSliderControlPrev(e) {
  * @this {HTMLElement}
  * @param {MouseEvent} e
  */
-function onClickSliderControlNext(e) {
+function onSliderControlNextClick(e) {
   incrementSlider(this.dataset.sliderControlNext, 1);
 }
 
@@ -55,7 +71,7 @@ function onClickSliderControlNext(e) {
  * @param {number} n 
  */
 function incrementSlider(sliderId, n) {
-  isForceScroll = true;
+  onDocScrollState.isForceScroll = true;
 
   document.querySelectorAll(`[data-slider="${sliderId}"]`)
     .forEach(el => {
@@ -71,5 +87,5 @@ function incrementSlider(sliderId, n) {
       }
     });
 
-  isForceScroll = false;
+  onDocScrollState.isForceScroll = false;
 }
