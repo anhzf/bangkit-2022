@@ -1,3 +1,4 @@
 {
-  "scss.validate": false
+  "scss.validate": false,
+  "liveServer.settings.root": "/web-development-basic_tugas-akhir/dist"
 }

@@ -18,53 +18,81 @@
   <div id="top"></div>
 
   <header data-horizontal-scroll-wrapper>
-    <div class="title">
-      <h1>Explore the Beautiful Destination</h1>
-      <p>Find the best place for your vacation, let your head feel the freshness.</p>
+    <div class="hero">
+      <div class="title">
+        <h1>Explore the Beautiful Destination</h1>
+        <p>Find the best place for your vacation, let your head feel the freshness.</p>
+      </div>
+
+      <ul class="slider" data-slider="main" data-horizontal-scroll-target aria-label="carousel">
+        <li role="tabpanel">
+          <include src="src/components/CardDestination.html">
+            {"title": "Lauterbrunnen, Switzerland", "imgSrc":
+            "./assets/robin-ulrich-QuZ6kOAeW2o-unsplash.jpg?width=700",
+            "link": "#lauterbrunnen/detail"}
+          </include>
+        </li>
+
+        <li role="tabpanel">
+          <include src="src/components/CardDestination.html">
+            {"title": "Bali, Indonesia", "imgSrc": "./assets/alfiano-sutianto-exFdOWkYBQw-unsplash.jpg?width=700",
+            "link": "#bali/detail"}
+          </include>
+        </li>
+
+        <li role="tabpanel">
+          <include src="src/components/CardDestination.html">
+            {"title": "Komodo Island, Indonesia", "imgSrc": "./assets/david-clode-o-S8EiQVo_g-unsplash.jpg?width=700",
+            "link": "#komodo-island/detail"}
+          </include>
+        </li>
+
+        <li role="tabpanel">
+          <include src="src/components/CardDestination.html">
+            {"title": "Raja Ampat, Indonesia", "imgSrc": "./assets/sutirta-budiman-DxmBSgUYKis-unsplash.jpg?width=700",
+            "link": "#raja-ampat/detail"}
+          </include>
+        </li>
+      </ul>
+
+      <div class="slider__control">
+        <button class="slider__control__btn slider__control__btn--prev" data-slider-control-prev="main">
+          <span class="material-icons">
+            arrow_right_alt
+          </span>
+        </button>
+        <button class="slider__control__btn slider__control__btn--next" data-slider-control-next="main">
+          <span class="material-icons">
+            arrow_right_alt
+          </span>
+        </button>
+      </div>
     </div>
 
-    <ul class="slider" data-slider="main" data-horizontal-scroll-target aria-label="carousel">
-      <li role="tabpanel">
-        <include src="src/components/CardDestination.html">
-          {"title": "Lauterbrunnen, Switzerland", "imgSrc": "./assets/robin-ulrich-QuZ6kOAeW2o-unsplash.jpg?width=600",
-          "link": "#lauterbrunnen/detail"}
-        </include>
-      </li>
+    <nav>
+      <b>Menu</b>
 
-      <li role="tabpanel">
-        <include src="src/components/CardDestination.html">
-          {"title": "Bali, Indonesia", "imgSrc": "./assets/alfiano-sutianto-exFdOWkYBQw-unsplash.jpg?width=600",
-          "link": "#bali/detail"}
-        </include>
-      </li>
+      <ul>
+        <li>
+          <a href="#top">Goto Top</a>
 
-      <li role="tabpanel">
-        <include src="src/components/CardDestination.html">
-          {"title": "Pulau Komodo, Indonesia", "imgSrc": "./assets/david-clode-o-S8EiQVo_g-unsplash.jpg?width=600",
-          "link": "#pulau-komodo/detail"}
-        </include>
-      </li>
-
-      <li role="tabpanel">
-        <include src="src/components/CardDestination.html">
-          {"title": "Raja Ampat, Indonesia", "imgSrc": "./assets/sutirta-budiman-DxmBSgUYKis-unsplash.jpg?width=600",
-          "link": "#raja-ampat/detail"}
-        </include>
-      </li>
-    </ul>
-
-    <div class="slider__control">
-      <button class="slider__control__btn slider__control__btn--prev" data-slider-control-prev="main">
-        <span class="material-icons">
-          arrow_right_alt
-        </span>
-      </button>
-      <button class="slider__control__btn slider__control__btn--next" data-slider-control-next="main">
-        <span class="material-icons">
-          arrow_right_alt
-        </span>
-      </button>
-    </div>
+          <ul>
+            <li><a href="#lauterbrunnen/detail">Lauterbrunnen</a></li>
+            <li><a href="#bali/detail">Bali</a></li>
+            <li><a href="#komodo-island/detail">Komodo Island</a></li>
+            <li><a href="#raja-ampat/detail">Raja Ampat</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://github.com/anhzf/bangkit-2022/tree/master/web-development-basic_tugas-akhir" target="_blank">
+            <span>Source code</span>
+            <span class="material-icons text-base">
+              open_in_new
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </header>
 
   <main>
@@ -75,9 +103,11 @@
             <h2>Lauterbrunnen</h2>
             <small class="subtitle">Switzerland</small>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa delectus numquam omnis voluptate sapiente
-            libero odit ipsa corrupti? Aspernatur asperiores explicabo quod eaque sapiente magni dolores excepturi omnis
-            architecto maxime.</p>
+          <p>
+            Lauterbrunnen Valley is by far one of the most popular destinations in Switzerland, featuring glacial
+            waterfalls, hiking trails, ski slopes, and quaint villages. This stunning destination is the gateway to the
+            Jungfrau Region and it's often referred to as The Valley Of 72 Waterfalls.
+          </p>
           <div class="actions">
             <a href="https://goo.gl/maps/MTMghyWppacSKduW7" class="btn btn--sm">
               <span>View on Google Maps</span>
@@ -105,9 +135,12 @@
             <h2>Bali</h2>
             <small class="subtitle">Indonesia</small>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa delectus numquam omnis voluptate sapiente
-            libero odit ipsa corrupti? Aspernatur asperiores explicabo quod eaque sapiente magni dolores excepturi omnis
-            architecto maxime.</p>
+          <p>
+            Also known as the Land of the Gods, Bali appeals through its sheer natural beauty of looming volcanoes and
+            lush terraced rice fields that exude peace and serenity. It is also famous for surfers’ paradise! Bali
+            enchants with its dramatic dances and colorful ceremonies, its arts, and crafts, to its luxurious beach
+            resorts and exciting nightlife. And everywhere, you will find intricately carved temples.
+          </p>
           <div class="actions">
             <a href="https://goo.gl/maps/BbQHBSL2g6aDTaT88" class="btn btn--sm">
               <span>View on Google Maps</span>
@@ -129,15 +162,18 @@
         </div>
       </section>
 
-      <section id="pulau-komodo/detail" class="details">
+      <section id="komodo-island/detail" class="details">
         <div class="info">
           <div>
-            <h2>Pulau Komodo</h2>
+            <h2>Komodo Island</h2>
             <small class="subtitle">Indonesia</small>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa delectus numquam omnis voluptate sapiente
-            libero odit ipsa corrupti? Aspernatur asperiores explicabo quod eaque sapiente magni dolores excepturi omnis
-            architecto maxime.</p>
+          <p>
+            Komodo island, part of the Lesser Sunda chain of Indonesian islands. The most featured here is the Komodo
+            Dragon itself, where it is endangered species with 3m-long. Komodo National Park covers the entire region
+            and is home to more than 4,000 dragons, and is made up of rusty-red volcanic hills, savannah and forests.
+            Its surrounding waters of seagrass beds, mangrove shrublands and coral reefs are famous for diving.
+          </p>
           <div class="actions">
             <a href="https://goo.gl/maps/hk6wTxFqQJUfyPQMA" class="btn btn--sm">
               <span>View on Google Maps</span>
@@ -148,7 +184,7 @@
           </div>
         </div>
         <div class="picture">
-          <img src="./assets/david-clode-o-S8EiQVo_g-unsplash.jpg?width=700" alt="Pulau Komodo">
+          <img src="./assets/david-clode-o-S8EiQVo_g-unsplash.jpg?width=700" alt="Komodo Island">
           <figcaption>
             <small>Photo by <a
                 href="https://unsplash.com/@davidclode?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">David
@@ -164,9 +200,11 @@
             <h2>Raja Ampat</h2>
             <small class="subtitle">Indonesia</small>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa delectus numquam omnis voluptate sapiente
-            libero odit ipsa corrupti? Aspernatur asperiores explicabo quod eaque sapiente magni dolores excepturi omnis
-            architecto maxime.</p>
+          <p>
+            Comprising hundreds of jungle-covered islands, Raja Ampat is known for its beaches and coral reefs rich with
+            marine life. Ancient rock paintings and caves are on Misool Island, while the crimson bird of paradise lives
+            on Waigeo Island. Batanta and Salawati are the archipelago’s other main islands.
+          </p>
           <div class="actions">
             <a href="https://goo.gl/maps/t21ZiHbytdjoTinv5" class="btn btn--sm">
               <span>View on Google Maps</span>
@@ -194,32 +232,6 @@
         <img src="./assets/me-transparent.png" alt="anhzf">
         <strong class="title">Alwan Nuha Zaky Fadhila</strong>
       </div>
-
-      <nav>
-        <b>Table of contents</b>
-
-        <ul>
-          <li>
-            <a href="#top">Goto Top</a>
-
-            <ul>
-              <li><a href="#lauterbrunnen/detail">Lauterbrunnen</a></li>
-              <li><a href="#bali/detail">Bali</a></li>
-              <li><a href="#pulau-komodo/detail">Pulau Komodo</a></li>
-              <li><a href="#raja-ampat/detail">Raja Ampat</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="https://github.com/anhzf/bangkit-2022/tree/master/web-development-basic_tugas-akhir"
-              target="_blank">
-              <span>Source code</span>
-              <span class="material-icons text-base">
-                open_in_new
-              </span>
-            </a>
-          </li>
-        </ul>
-      </nav>
     </aside>
   </main>
 

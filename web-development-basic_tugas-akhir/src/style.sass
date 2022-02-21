@@ -52,7 +52,7 @@ $outline: #73777F
   --shadow: 0 .6px 1px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
 
 *
-  color: var(--on-background)
+  color: inherit
   @apply box-border m-0 font-sans
 
 .debug *
@@ -62,8 +62,10 @@ html
   @apply scroll-smooth
 
 body
-  background-color: var(--background)
+  background-color: var(--tertiary-container)
   @apply w-full
+  *
+    color: var(--on-background)
   > *
     @apply max-w-full
 
@@ -71,7 +73,7 @@ ul, ol
   @apply list-none space-y-1
 
 ul
-  padding-inline-start: theme('spacing.4')
+  padding-inline-start: theme('spacing.2')
 
 a
   color: var(--primary)
@@ -106,25 +108,31 @@ h6
 
 header
   background-color: var(--surface-variant)
-  @apply w-full flex flex-col py-8 gap-y-8
+  @apply sticky top-0 flex flex-nowrap
+  nav
+    background-color: var(--tertiary-container)
+    @apply shrink-0 sticky inset-y-0 z-50 flex flex-col justify-end gap-y-4 w-60 p-8
+    *
+      color: var(--on-tertiary-container)
+
+.hero
+  @apply flex flex-col gap-y-8 py-8 overflow-hidden
   .title
     @apply flex flex-col gap-y-4
   h1
-    @apply mx-8
+    @apply text-6xl mx-8
+  h4
+    @apply text-xl
   p
     @apply text-xl mx-10
 
 main
-  @apply relative flex
+  @apply sticky flex
   > aside
     background-color: var(--tertiary-container)
-    @apply sticky top-0 flex flex-col justify-between w-60 max-h-screen py-10
+    @apply sticky top-0 flex flex-col justify-between w-60 h-min py-10
     *
       color: var(--on-tertiary-container)
-
-aside
-  > nav
-    @apply flex flex-col p-6
 
 footer
   background-color: var(--secondary)
@@ -170,7 +178,7 @@ button,
 .card
   background-color: var(--surface)
   box-shadow: var(--shadow)
-  @apply relative flex flex-col rounded-[2rem] overflow-hidden
+  @apply relative flex flex-col rounded-[1.5rem] overflow-hidden
   .content
     @apply p-4
   .media
@@ -195,9 +203,7 @@ button,
   .content
     @apply flex justify-between items-center px-6
   .media
-    @apply h-96 aspect-[16/10]
-  h2
-    @apply font-semibold
+    @apply h-72 aspect-[16/10]
 
 main
   > .content
