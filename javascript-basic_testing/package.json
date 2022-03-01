@@ -1,0 +1,16 @@
+{
+  "name": "javascript-basic_testing",
+  "version": "1.0.0",
+  "main": "gradeCalculation.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "jest": "^27.5.1"
+  }
+}
