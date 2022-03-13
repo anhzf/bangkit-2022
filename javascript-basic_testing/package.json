@@ -9,8 +9,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "jest": "^27.5.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anhzf/bangkit-2022.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anhzf/bangkit-2022/issues"
+  },
+  "homepage": "https://github.com/anhzf/bangkit-2022#readme",
+  "description": ""
 }

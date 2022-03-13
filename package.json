@@ -1,28 +1,25 @@
 {
-  "name": "backend-basic_ilt",
+  "name": "bangkit-2022",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@hapi/hapi": "^20.2.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anhzf/bangkit-2022.git"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/anhzf/bangkit-2022/issues"
   },
   "homepage": "https://github.com/anhzf/bangkit-2022#readme",
-  "description": ""
+  "workspaces": [
+    "backend-basic_ilt",
+    "javascript-basic_testing",
+    "web-development-basic_tugas-akhir"
+  ]
 }
