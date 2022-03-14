@@ -1,4 +1,5 @@
 {
   "scss.validate": false,
-  "liveServer.settings.root": "/web-development-basic_tugas-akhir/dist"
+  "liveServer.settings.root": "/web-development-basic_tugas-akhir/dist",
+  "javascript.preferences.importModuleSpecifierEnding": "js"
 }

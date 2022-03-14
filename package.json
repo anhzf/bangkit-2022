@@ -18,8 +18,14 @@
   },
   "homepage": "https://github.com/anhzf/bangkit-2022#readme",
   "workspaces": [
-    "backend-basic_ilt",
+    "web-development-basic_tugas-akhir",
     "javascript-basic_testing",
-    "web-development-basic_tugas-akhir"
-  ]
+    "backend-basic_ilt",
+    "backend-basic_bookshelf-api"
+  ],
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
+  }
 }
