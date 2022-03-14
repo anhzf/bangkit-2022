@@ -6,16 +6,19 @@ import {
   deleteBook, findBook, listBooks, saveBook, searchBooks,
 } from './repository.js';
 import { pick } from '../utils/object.js';
+import { getDebugValue, shouldDebug } from '../utils/dev.js';
 
 const success = (data, message) => ({
   status: 'success',
-  message,
   data,
+  message,
+  ...(shouldDebug() ? { debug: getDebugValue() } : null),
 });
 
 const fail = (message) => ({
   status: 'fail',
   message,
+  ...(shouldDebug() ? { debug: getDebugValue() } : null),
 });
 
 /** @type {Handler} */
@@ -49,20 +52,17 @@ const create = (req, h) => {
 
 /** @type {Handler} */
 const getAll = ({ query }) => {
-  const qName = query.name;
-  const qReading = Number(query.reading);
-  const qFinished = Number(query.finished);
-  const hasQuery = typeof qName === 'string' || !Number.isNaN(qReading) || !Number.isNaN(qFinished);
-  const q = {
-    name: qName,
-    reading: Number.isNaN(qReading) ? undefined : qReading,
-    finished: Number.isNaN(qFinished) ? undefined : qFinished,
-  };
+  // Normalize query
+  const { name } = query;
+  const reading = query.reading === undefined ? undefined : !!Number(query.reading);
+  const finished = query.finished === undefined ? undefined : !!Number(query.finished);
+  const hasQuery = typeof name === 'string' || reading !== undefined || finished !== undefined;
+  const q = { name, reading, finished };
 
   const books = (hasQuery ? searchBooks(q) : listBooks())
-    .map((el) => pick(el, ['id', 'name', 'publisher']));
+    .map((el) => (query.all ? el : pick(el, ['id', 'name', 'publisher'])));
 
-  return success({ books }, 'Buku berhasil ditambahkan');
+  return success({ books });
 };
 
 /** @type {Handler} */
