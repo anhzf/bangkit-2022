@@ -69,8 +69,7 @@ printf "\nTask 4: Create and configure Cloud SQL Instance\n"
 read -p "Enter Password for your Root User: " root_password
 # Create a MySQL Cloud SQL Instance called griffin-dev-db in us-east1
 gcloud sql instances create griffin-dev-db \
-  --tier=db-f1-micro \
-  --region=us-east1
+  --region=us-east1 \
   --root-password=$root_password
 printf "Created database with root password=$root_password\n"
 printf "Connecting to the sql instance...\n"
@@ -87,7 +86,7 @@ gcloud container clusters create griffin-dev \
   --network=griffin-dev-vpc \
   --subnetwork=griffin-dev-wp \
   --zone=us-east1-b
-gcloud containers clusters get-credentials griffin-dev --zone=us-east1-b
+gcloud container clusters get-credentials griffin-dev --zone=us-east1-b
 printf "\nTask 5 DONE! Check your progress! \n"
 
 printf "\nTask 6: Prepare the Kubernetes cluster\n"
@@ -100,14 +99,14 @@ nano ./wp-k8s/wp-env.yaml
 kubectl create -f ./wp-k8s/wp-env.yaml
 printf "\nConfigure the service account..."
 gcloud iam service-accounts keys create key.json \
-    --iam-account=cloud-sql-proxy@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
+  --iam-account=cloud-sql-proxy@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
 kubectl create secret generic cloudsql-instance-credentials \
-    --from-file key.json
+  --from-file key.json
 printf "\nTask 6 DONE! Check your progress! \n"
 
 printf "\nTask 7: Create a WordPress deployment\n"
 printf "\nYou will be editing the following files to configure your WordPress Deployment\n"
-printf "Please replace the YOUR_SQL_INSTANCE to your Cloud SQL instance name."
+printf "Pleas e replace the YOUR_SQL_INSTANCE to your Cloud SQL instance name."
 printf "\nEditing wp-deployment.yaml...\n"
 sleep 5
 nano ./wp-k8s/wp-deployment.yaml
@@ -119,11 +118,9 @@ printf "\nTask 8: Enable monitoring\n"
 printf "SKIPPED\n"
 
 printf "\nTask 9: Provide access for an additional engineer\n"
-read -p "Enter Project ID [$DEVSHELL_PROJECT_ID]: " project_id
-project_id=${project_id:-DEVSHELL_PROJECT_ID}
 read -p "Enter Engineer's email address: " engineer_email
 gcloud projects add-iam-policy-binding $project_id \
-    --member="user:$engineer_email" \
-    --role="roles/editor"
+  --member="user:${engineer_email}" \
+  --role="roles/editor"
 
 printf "\nThere is 'Task 8' that we can't handle. So, please do it yourself and Goodluck!\n"
