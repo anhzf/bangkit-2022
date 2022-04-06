@@ -106,7 +106,7 @@ printf "\nTask 6 DONE! Check your progress! \n"
 
 printf "\nTask 7: Create a WordPress deployment\n"
 printf "\nYou will be editing the following files to configure your WordPress Deployment\n"
-printf "Pleas e replace the YOUR_SQL_INSTANCE to your Cloud SQL instance name."
+printf "Please replace the YOUR_SQL_INSTANCE to your Cloud SQL instance name."
 printf "\nEditing wp-deployment.yaml...\n"
 sleep 5
 nano ./wp-k8s/wp-deployment.yaml
