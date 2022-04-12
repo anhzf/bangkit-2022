@@ -92,7 +92,7 @@ if [ "$want_to_continue" == "y" ]; then
   # You must test that a change to the source code will result in the automated deployment of the new build.
   # You should pull the sample-app repository to make the changes. Make sure you push a new, updated, tag.
   CLUSTER_NAME=spinnaker-tutorial
-  gcloud container clusters get-credentials $CLUSTER_NAME --region=$REGION
+  gcloud container clusters get-credentials $CLUSTER_NAME --region=$ZONE
   deck_pod=$(kubectl get pods --namespace default -l "cluster=spin-deck" -o jsonpath="{.items[0].metadata.name}")
   kubectl port-forward --namespace default $deck_pod 8080:9000 >> /dev/null &
   gcloud source repos clone sample-app
